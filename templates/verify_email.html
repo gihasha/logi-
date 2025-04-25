@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Email</title>
+</head>
+<body>
+    <h1>Verify Your Email</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <p>We sent a verification code to {{ email }}</p>
+    <form method="POST">
+        <input type="text" name="code" placeholder="Verification Code" required>
+        <button type="submit">Verify</button>
+    </form>
+</body>
+</html>
